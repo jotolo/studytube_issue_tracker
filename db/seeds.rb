@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+user = FactoryBot.create(:user)
+user.password = 'qwertyuiop'
+user.password_confirmation = 'qwertyuiop'
+user.save
+
+puts 'User Info:'
+puts "email: #{user.email}"
+puts 'password: qwertyuiop'
