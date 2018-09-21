@@ -50,15 +50,14 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-#TODO: set exact version of gems
 # Authentication
 gem 'active_model_serializers', '~> 0.10.0'
-gem 'devise' #, '4.4.3'
-gem 'devise_token_auth' #, '0.2.0'
+gem 'devise', '4.4.3'
+gem 'devise_token_auth', '0.2.0'
 gem 'omniauth', '>= 1.0.0'
 gem 'rack-cors', require: 'rack/cors'
 
-gem 'rolify'
+gem 'rolify', '5.2.0'
 
 #Authorization
-gem 'cancancan'
+gem 'cancancan', '2.1.2'
