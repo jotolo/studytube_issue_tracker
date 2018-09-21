@@ -26,5 +26,5 @@ manager.password_confirmation = 'qwertyuiop'
 manager.save
 
 puts 'Manager Info:'
-puts "email: #{user.email}"
+puts "email: #{manager.email}"
 puts 'password: qwertyuiop'

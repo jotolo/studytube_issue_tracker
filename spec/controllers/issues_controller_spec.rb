@@ -49,11 +49,11 @@ RSpec.describe IssuesController, type: :controller do
     end
 
     let(:valid_user_attributes){
-      valid_attributes.merge(user_id: @user.id)
+      valid_attributes.merge!(user_id: @user.id)
     }
 
     let(:invalid_user_attributes){
-      invalid_attributes.merge(user_id: @user.id)
+      invalid_attributes.merge!(user_id: @user.id)
     }
 
 
@@ -112,7 +112,7 @@ RSpec.describe IssuesController, type: :controller do
         }
 
         it 'updates the requested issue' do
-          issue = Issue.create! valid_attributes.merge(user_id: @user.id)
+          issue = Issue.create! valid_user_attributes
           put :update, params: {id: issue.to_param, issue: new_attributes}, session: valid_session
           issue.reload
           expect(issue.title).to eq(new_attributes[:title])
@@ -172,11 +172,11 @@ RSpec.describe IssuesController, type: :controller do
     end
 
     let(:valid_manager_attributes){
-      valid_attributes.merge(manager_id: @manager.id)
+      valid_attributes.merge!(manager_id: @manager.id)
     }
 
     let(:invalid_manager_attributes){
-      invalid_attributes.merge(manager_id: @manager.id)
+      invalid_attributes.merge!(manager_id: @manager.id)
     }
 
 
@@ -237,14 +237,14 @@ RSpec.describe IssuesController, type: :controller do
         end
 
         it 'renders a JSON response with an issue without manager' do
-          issue = Issue.create! valid_attributes.merge(manager_id: nil)
+          issue = Issue.create! valid_attributes.merge!(manager_id: nil)
           put :update, params: {id: issue.to_param, issue: valid_manager_attributes}, session: valid_session
           expect(response).to have_http_status(:ok)
           expect(response.content_type).to eq('application/json')
         end
 
         it 'renders a 403 code JSON response with an issue with distinct manager' do
-          issue = Issue.create! valid_attributes.merge(manager_id: FactoryBot.create(:manager).id)
+          issue = Issue.create! valid_attributes.merge!(manager_id: FactoryBot.create(:manager).id)
           put :update, params: {id: issue.to_param, issue: valid_manager_attributes}, session: valid_session
           expect(response).to have_http_status(403)
           expect(response.content_type).to eq('application/json')

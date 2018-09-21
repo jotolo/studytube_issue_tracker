@@ -20,12 +20,14 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['STUDYTUBE_DATABASE_USERNAME'] || 'postgres' %>
+  password: <%= ENV['STUDYTUBE_DATABASE_PASSWORD'] || 'postgres' %>
+  host: <%= ENV['POSTGRES_HOST'] || 'localhost'%>
+  port: <%= ENV['POSTGRES_PORT'] || 5432 %>
 
 development:
   <<: *default
   database: studytube_issue_tracker_development
-  username: postgres
-  password: postrgres
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -60,8 +62,6 @@ development:
 test:
   <<: *default
   database: studytube_issue_tracker_test
-  username: postgres
-  password: postrgres
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
