@@ -81,6 +81,11 @@ RSpec.describe IssuesController, type: :controller do
           }.to change(Issue, :count).by(1)
         end
 
+        it 'receive 403 error code because it is someone else issue' do
+            post :create, params: {issue: valid_attributes}, session: valid_session
+            expect(response).to have_http_status(403)
+        end
+
         it 'renders a JSON response with the new issue' do
 
           post :create, params: {issue: valid_user_attributes}, session: valid_session
