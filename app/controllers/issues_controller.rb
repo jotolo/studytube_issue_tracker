@@ -1,9 +1,12 @@
 class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /issues
   def index
-    @issues = Issue.all
+    @issues = user_signed_in? && current_user.has_role?(:manager) ? Issue.all : current_user.issues
+    # users and managers should be able to filter by “status”
+    @issues = @issues.by_status(params[:status]) if params[:status]
 
     render json: @issues
   end
@@ -26,7 +29,7 @@ class IssuesController < ApplicationController
 
   # PATCH/PUT /issues/1
   def update
-    if @issue.update(issue_params)
+    if @issue.try_update(current_user, issue_params)
       render json: @issue
     else
       render json: @issue.errors, status: :unprocessable_entity
