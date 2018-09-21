@@ -6,7 +6,7 @@ FactoryBot.define do
     confirmed_at {Date.today}
 
     factory :manager do
-      after(:build) {|user| user.add_role(:admin)}
+      after(:build) {|user| user.add_role(:manager)}
     end
   end
 end
