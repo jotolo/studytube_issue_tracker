@@ -8,5 +8,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
 
+  has_many :issues
+  has_many :manager_issues, :class_name => 'Issue', :foreign_key => 'manager_id'
+
   validates :email, presence: true
+
+  after_create :assign_default_role
+
+  private
+  def assign_default_role
+    self.add_role(:user) if self.roles.blank?
+  end
 end
