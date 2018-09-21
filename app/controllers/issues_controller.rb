@@ -7,7 +7,6 @@ class IssuesController < ApplicationController
     @issues = user_signed_in? && current_user.has_role?(:manager) ? Issue.all : current_user.issues
     # users and managers should be able to filter by “status”
     @issues = @issues.by_status(params[:status]) if params[:status]
-
     render json: @issues
   end
 

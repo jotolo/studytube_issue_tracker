@@ -8,12 +8,14 @@ class Ability
        if user.is_manager?
          can :index, Issue
          can :update, Issue, manager_id: [user.id, nil]
-       else
+         can :show, Issue
+       elsif user.is_user?
          can :index, Issue
          # be able to create/update/delete only your issues
          can :create, Issue, user_id: user.id
          can :update, Issue, user_id: user.id
          can :destroy, Issue, user_id: user.id
+         can :show, Issue, user_id: user.id
 
        end
     #
