@@ -44,8 +44,8 @@ Visit [http://localhost:3000](http://localhost:3000)
 
 ## Authentication and registration
 The API authentication was implemented using [devise_token_auth](https://github.com/lynndylanhurley/devise_token_auth).
-To check routes to register, login or logout you can read the [devise_token_auth documentation](https://github.com/lynndylanhurley/devise_token_auth/blob/master/docs/usage/README.md)
-Once you start the project the shell will give 2 users(emails and password) for you to test the API.
+To check routes to register, login or logout you can read the [devise_token_auth documentation](https://github.com/lynndylanhurley/devise_token_auth/blob/master/docs/usage/README.md).
+Once you start the project the shell will give 2 users (emails and password) for you to test the API.
 
 ## Documentation
 The API has his own documentation you can consume in the route [`/documentation`](http://localhost:3000/documentation)
