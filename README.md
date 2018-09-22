@@ -49,3 +49,7 @@ Once you start the project the shell will give 2 users (emails and password) for
 
 ## Documentation
 The API has his own documentation you can consume in the route [`/documentation`](http://localhost:3000/documentation)
+
+## Running Test Suite
+In order to run the Test Suite you just need to run the command: `rspec`.
+This will show you if all the test are OK.
