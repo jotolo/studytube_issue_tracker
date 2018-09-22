@@ -63,4 +63,7 @@ gem 'rolify', '5.2.0'
 gem 'cancancan', '2.1.2'
 
 # Documentation
-gem 'apipie-rails'
+gem 'apipie-rails', '0.5.10'
+
+# Pagination
+gem 'will_paginate', '3.1.6'
