@@ -59,5 +59,8 @@ gem 'rack-cors', require: 'rack/cors'
 
 gem 'rolify', '5.2.0'
 
-#Authorization
+# Authorization
 gem 'cancancan', '2.1.2'
+
+# Documentation
+gem 'apipie-rails'
