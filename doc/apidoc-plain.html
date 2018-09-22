@@ -1,0 +1,350 @@
+  <h4><a href='#issues'>Issues</a></h4>
+  <ul>
+      <li><a href='#issues-index'>index</a></li>
+      <li><a href='#issues-show'>show</a></li>
+      <li><a href='#issues-create'>create</a></li>
+      <li><a href='#issues-update'>update</a></li>
+      <li><a href='#issues-destroy'>destroy</a></li>
+  </ul>
+
+
+
+  <hr/>
+
+  <div>
+    <h2 id="issues">
+      <a href='#issues'>Issues</a><br>
+      <small></small>
+    </h2>
+  </div>
+
+
+  <div>
+
+      <hr/>
+
+      <h3 id="issues-index">
+      <a href='#issues'>Issues</a> / <a href='#issues-index'>index</a>
+      </h3>
+
+      <div>
+          <h4>
+              GET /issues
+            <br>
+            <small>Return all issues.</small>
+          </h4>
+      </div>
+
+      <div>
+        
+<p>Users: see the list of only your issues (most recent at the top) |
+Managers: be able to see the list of all issues.</p>
+
+
+          <h4>Errors</h4>
+            403
+            Forbidden, for anonymous users.
+            <pre class="prettyprint lang-yaml">--- 
+...
+</pre>
+
+            <br>
+
+      </div>
+      <hr/>
+
+      <h3 id="issues-show">
+      <a href='#issues'>Issues</a> / <a href='#issues-show'>show</a>
+      </h3>
+
+      <div>
+          <h4>
+              GET /issues/:id
+            <br>
+            <small>Return issue information</small>
+          </h4>
+      </div>
+
+      <div>
+        
+<p>Users: see only your issues (most recent at the top) | Managers: be able to
+see all issues.</p>
+
+
+          <h4>Errors</h4>
+            403
+            Forbidden, for anonymous users.
+            <pre class="prettyprint lang-yaml">--- 
+...
+</pre>
+
+            <br>
+
+          <h4>Params</h4>
+          <ul>
+    <li>
+      <strong>id </strong>:
+      <small>
+        required
+        
+          [ 
+<p>Must be a Integer</p>
+ ]
+      </small>
+      
+    </li>
+    
+</ul>
+
+      </div>
+      <hr/>
+
+      <h3 id="issues-create">
+      <a href='#issues'>Issues</a> / <a href='#issues-create'>create</a>
+      </h3>
+
+      <div>
+          <h4>
+              POST /issues
+            <br>
+            <small>Create a new issue.</small>
+          </h4>
+      </div>
+
+      <div>
+        
+<p>Users: be able to create only your issues | Managers: Cannot create issues.</p>
+
+
+          <h4>Errors</h4>
+            403
+            Forbidden, for anonymous users and manager users.
+            <pre class="prettyprint lang-yaml">--- 
+...
+</pre>
+
+            <br>
+
+          <h4>Params</h4>
+          <ul>
+    <li>
+      <strong>title </strong>:
+      <small>
+        required
+        
+          [ 
+<p>Must be a String</p>
+ ]
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>description </strong>:
+      <small>
+        optional
+        
+          [ 
+<p>Must be a String</p>
+ ]
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>user_id </strong>:
+      <small>
+        required
+        
+          [ 
+<p>Must be a Integer</p>
+ ]
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>manager_id </strong>:
+      <small>
+        optional
+        
+          [ 
+<p>Must be a Integer</p>
+ ]
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>status </strong>:
+      <small>
+        optional
+        
+          [ 
+<p>Must be a Integer</p>
+ ]
+      </small>
+      
+    </li>
+    
+</ul>
+
+      </div>
+      <hr/>
+
+      <h3 id="issues-update">
+      <a href='#issues'>Issues</a> / <a href='#issues-update'>update</a>
+      </h3>
+
+      <div>
+          <h4>
+              PUT /issues/:id
+            <br>
+            <small>Update issue information</small>
+          </h4>
+      </div>
+
+      <div>
+        
+<p>Only available for logged users. Users: not be able to update the status of
+your issues, not be able to update the assignend manager of your issues |
+Managers: be able to assign an issue to only yourself and only if it is not
+already assigned to somebody else, be able to unassign an issue from
+yourself, be able to change the status of the issue only if the issue is
+assigned to you, not be able to assign an issue to somebody else, not be
+able to change the status of an issue unless it is assigned to you.</p>
+
+
+          <h4>Errors</h4>
+            403
+            Forbidden, for anonymous users or users that does not belong to the issue
+            <pre class="prettyprint lang-yaml">--- 
+...
+</pre>
+
+            <br>
+
+          <h4>Params</h4>
+          <ul>
+    <li>
+      <strong>id </strong>:
+      <small>
+        required
+        
+          [ 
+<p>Must be a Integer</p>
+ ]
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>title </strong>:
+      <small>
+        optional
+        
+          [ 
+<p>Must be a String</p>
+ ]
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>description </strong>:
+      <small>
+        optional
+        
+          [ 
+<p>Must be a String</p>
+ ]
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>user_id </strong>:
+      <small>
+        optional
+        
+          [ 
+<p>Must be a Integer</p>
+ ]
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>manager_id </strong>:
+      <small>
+        optional
+        
+          [ 
+<p>Must be a Integer</p>
+ ]
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>status </strong>:
+      <small>
+        optional
+        
+          [ 
+<p>Must be a Integer</p>
+ ]
+      </small>
+      
+    </li>
+    
+</ul>
+
+      </div>
+      <hr/>
+
+      <h3 id="issues-destroy">
+      <a href='#issues'>Issues</a> / <a href='#issues-destroy'>destroy</a>
+      </h3>
+
+      <div>
+          <h4>
+              DELETE /issues/:id
+            <br>
+            <small>Destroy the issue with the given :id.</small>
+          </h4>
+      </div>
+
+      <div>
+        
+<p>Users: be able to destroy only your issues | Managers: Cannot destroy
+issues.</p>
+
+
+          <h4>Errors</h4>
+            403
+            Forbidden, for anonymous users and manager users.
+            <pre class="prettyprint lang-yaml">--- 
+...
+</pre>
+
+            <br>
+
+          <h4>Params</h4>
+          <ul>
+    <li>
+      <strong>id </strong>:
+      <small>
+        required
+        
+          [ 
+<p>Must be a Integer</p>
+ ]
+      </small>
+      
+    </li>
+    
+</ul>
+
+      </div>
+  </div>
