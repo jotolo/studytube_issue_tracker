@@ -3,6 +3,7 @@ class IssuesController < ApplicationController
   load_and_authorize_resource
 
   api :GET, '/issues', 'Return all issues.'
+  param :status, Integer, 'Filter by status'
   description 'Users: see the list of only your issues (most recent at the top) | Managers: be able to see the list of all issues.'
   error 403, 'Forbidden, for anonymous users.'
   formats ['json']
