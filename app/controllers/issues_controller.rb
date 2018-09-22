@@ -8,9 +8,14 @@ class IssuesController < ApplicationController
   error 403, 'Forbidden, for anonymous users.'
   formats ['json']
   def index
+    params[:page] ||= 1
     @issues = user_signed_in? && current_user.has_role?(:manager) ? Issue.all : current_user.issues
     # users and managers should be able to filter by “status”
     @issues = @issues.by_status(params[:status]) if params[:status]
+
+    # pagination
+    @issues = @issues.paginate(:page => params[:page], :per_page => 25)
+
     render json: @issues
   end
 
